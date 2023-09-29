@@ -1,0 +1,21 @@
+{{ template "base" . }}
+{{ define "title" }}
+    Die Startseite
+{{ end }}
+{{ define "content" }}
+<body>
+    <h1 class="text-5xl text-center mt-5">Hier ist meine Webseite</h1>
+    <hr>
+    <h2 class="text-xl text-center text-red-600">{{ .Title }}</h2>
+    <ul class="pl-4">        
+        {{ range $val := index .Data "datas" }}
+             <li>
+                <h3 class="text-xl">{{ $val.Name }}</h3>
+                <div class="pl-4">       
+                    {{ block "todoComplete" $val }}  {{ end }}
+                    {{ block "todoOpen" $val }}  {{ end }} 
+                </div>
+            </li>
+        {{ end }}
+    </ul>   
+{{ end }}

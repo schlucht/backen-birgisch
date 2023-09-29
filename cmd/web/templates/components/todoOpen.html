@@ -1,0 +1,11 @@
+{{ define "todoOpen" }}
+    <div class="m-4 border p-3 shadow-md shadow-black rounded-md">
+        <h1 class="text-xl font-bold pb-2">Offenen Todos</h1>
+        {{ range $index, $td := .Todos }}
+            {{ if not $td.Completed }}
+            {{ $strId :=ToString $td.Id }}
+                <p id="{{ Join "todoOpen_" $strId }}" class="todo text-black" ><span class="text-lg mr-2 text-red-800 font-bold">X</span>{{ $td.Title }}</p>                        
+            {{ end }} 
+        {{ end }}       
+    </div>    
+{{ end }}

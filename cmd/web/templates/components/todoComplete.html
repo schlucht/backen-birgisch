@@ -1,0 +1,11 @@
+{{ define "todoComplete" }}
+    <div class="m-4 border p-3 shadow-black shadow-md rounded-md">
+        <h3 class="text-xl font-bold pb-2">Erledigte Todos</h3>
+        {{ range $td := .Todos }}
+            {{ if $td.Completed }}
+            {{ $strId :=ToString $td.Id }}
+                <p id="{{ Join "todoClose_" $strId }}" class="todo text-black" ><span class="text-lg mr-2 text-green-800 font-bold">&check;</span>{{ $td.Title }}</p>                          
+            {{ end }} 
+        {{ end }}
+    </div>
+{{ end }}
